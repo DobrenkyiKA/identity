@@ -10,11 +10,13 @@ import java.util.UUID;
 @Entity
 @Table(name = "users")
 public class UserEntity {
+
     @Id
-    @Column(nullable = false)
+    @GeneratedValue
+    @Column(nullable = false, updatable = false)
     private UUID id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, columnDefinition = "citext")
     private String email;
 
     @Column(nullable = false)
@@ -26,10 +28,10 @@ public class UserEntity {
             joinColumns = @JoinColumn(name = "user_id")
     )
     @Enumerated(EnumType.STRING)
-    @Column(name = "role")
+    @Column(name = "role", nullable = false)
     private Set<Role> roles;
 
-    @Column(nullable = false)
+    @Column(nullable = false, updatable = false)
     private Instant createdAt;
 
     protected UserEntity() {}
