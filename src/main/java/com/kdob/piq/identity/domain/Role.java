@@ -1,4 +1,6 @@
 package com.kdob.piq.identity.domain;
 
-public class Role {
+public enum Role {
+    USER,
+    ADMIN
 }
