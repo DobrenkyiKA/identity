@@ -22,12 +22,18 @@ public class UserService {
     public User register(String email, String rawPassword) {
         userRepository.findByEmail(email)
                 .ifPresent(user -> {
-                    throw new IllegalStateException("User already exists");
+                    throw new IllegalStateException("User with email: [" + user.getEmail() + "] already exists");
                 });
 
         String passwordHash = passwordEncoder.encode(rawPassword);
 
         User user = new User(null, email, passwordHash, Set.of(Role.USER), null);
         return userRepository.save(user);
+    }
+
+    public User authenticate(String email, String rawPassword) {
+        return userRepository.findByEmail(email)
+                .filter(user -> passwordEncoder.matches(rawPassword, user.getPasswordHash()))
+                .orElseThrow(() -> new IllegalStateException("Invalid credentials"));
     }
 }

@@ -11,11 +11,11 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    SecurityFilterChain securityFilterChain(HttpSecurity http) {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/health", "/auth/register").permitAll()
+                        .requestMatchers("/health", "/auth/register", "/auth/login", "/v3/api-docs", "/swagger-ui.html").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(Customizer.withDefaults());
         return http.build();
