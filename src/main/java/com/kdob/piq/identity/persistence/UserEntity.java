@@ -2,6 +2,7 @@ package com.kdob.piq.identity.persistence;
 
 import com.kdob.piq.identity.domain.Role;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Generated;
 
 import java.time.Instant;
 import java.util.Set;
@@ -31,7 +32,8 @@ public class UserEntity {
     @Column(name = "role", nullable = false)
     private Set<Role> roles;
 
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false, updatable = false, insertable = false)
+    @Generated
     private Instant createdAt;
 
     protected UserEntity() {}

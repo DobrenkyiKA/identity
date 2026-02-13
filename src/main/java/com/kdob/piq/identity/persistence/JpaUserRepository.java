@@ -3,10 +3,12 @@ package com.kdob.piq.identity.persistence;
 import com.kdob.piq.identity.domain.User;
 import com.kdob.piq.identity.domain.UserMapper;
 import com.kdob.piq.identity.domain.UserRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 import java.util.UUID;
 
+@Repository
 public class JpaUserRepository implements UserRepository {
 
     private final SpringDataUserRepository repository;
