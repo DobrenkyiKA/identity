@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
+import java.util.UUID;
 
 @Service
 public class UserService {
@@ -35,5 +36,10 @@ public class UserService {
         return userRepository.findByEmail(email)
                 .filter(user -> passwordEncoder.matches(rawPassword, user.getPasswordHash()))
                 .orElseThrow(() -> new IllegalStateException("Invalid credentials"));
+    }
+
+    public User findById(final UUID userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalStateException("User with id: [" + userId + "] not found"));
     }
 }
