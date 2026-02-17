@@ -44,9 +44,10 @@ public class AuthController {
 
         ResponseCookie cookie = ResponseCookie.from("refreshToken", refreshToken)
                 .httpOnly(true)
-                .secure(true)
+                .secure(false)
                 .sameSite("Lax")
-                .path("/auth")
+                .path("/")
+//                .path("/auth")
                 .maxAge(Duration.ofDays(14))
                 .build();
 
@@ -76,9 +77,10 @@ public class AuthController {
 
         ResponseCookie deleteCookie = ResponseCookie.from("refreshToken", "")
                 .httpOnly(true)
-                .secure(true)
+                .secure(false)
                 .sameSite("Lax")
-                .path("/auth")
+                .path("/")
+//                .path("/auth")
                 .maxAge(0)
                 .build();
 
