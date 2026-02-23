@@ -29,3 +29,6 @@ server:
 logging:
   level:
     org.flywaydb: INFO
+    org:
+      springframework:
+        security: DEBUG # or trace
