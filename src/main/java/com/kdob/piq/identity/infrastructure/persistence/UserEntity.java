@@ -1,6 +1,6 @@
-package com.kdob.piq.identity.persistence;
+package com.kdob.piq.identity.infrastructure.persistence;
 
-import com.kdob.piq.identity.domain.Role;
+import com.kdob.piq.identity.domain.model.Role;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Generated;
 

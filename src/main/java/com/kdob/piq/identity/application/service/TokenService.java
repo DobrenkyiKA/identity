@@ -1,6 +1,6 @@
-package com.kdob.piq.identity.application.token;
+package com.kdob.piq.identity.application.service;
 
-import com.kdob.piq.identity.domain.User;
+import com.kdob.piq.identity.domain.model.User;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters;

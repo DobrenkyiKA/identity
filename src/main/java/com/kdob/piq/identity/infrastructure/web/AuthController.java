@@ -1,12 +1,12 @@
-package com.kdob.piq.identity.api;
+package com.kdob.piq.identity.infrastructure.web;
 
-import com.kdob.piq.identity.api.dto.LoginRequest;
-import com.kdob.piq.identity.api.dto.RegisterRequest;
-import com.kdob.piq.identity.api.dto.TokenResponse;
-import com.kdob.piq.identity.application.UserService;
-import com.kdob.piq.identity.application.token.RefreshTokenService;
-import com.kdob.piq.identity.application.token.TokenService;
-import com.kdob.piq.identity.domain.User;
+import com.kdob.piq.identity.infrastructure.web.dto.LoginRequest;
+import com.kdob.piq.identity.infrastructure.web.dto.RegisterRequest;
+import com.kdob.piq.identity.infrastructure.web.dto.TokenResponse;
+import com.kdob.piq.identity.application.service.UserService;
+import com.kdob.piq.identity.application.service.RefreshTokenService;
+import com.kdob.piq.identity.application.service.TokenService;
+import com.kdob.piq.identity.domain.model.User;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

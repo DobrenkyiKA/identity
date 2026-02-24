@@ -1,4 +1,4 @@
-package com.kdob.piq.identity.config;
+package com.kdob.piq.identity.infrastructure.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

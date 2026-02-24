@@ -1,6 +1,6 @@
-package com.kdob.piq.identity.domain;
+package com.kdob.piq.identity.domain.model;
 
-import com.kdob.piq.identity.persistence.UserEntity;
+import com.kdob.piq.identity.infrastructure.persistence.UserEntity;
 
 public class UserMapper {
 

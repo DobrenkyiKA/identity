@@ -1,4 +1,4 @@
-package com.kdob.piq.identity.config;
+package com.kdob.piq.identity.infrastructure.config;
 
 import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jose.jwk.JWKSet;

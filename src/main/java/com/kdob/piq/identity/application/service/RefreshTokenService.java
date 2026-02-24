@@ -1,9 +1,8 @@
-package com.kdob.piq.identity.application.token;
+package com.kdob.piq.identity.application.service;
 
-import com.kdob.piq.identity.application.UserService;
-import com.kdob.piq.identity.domain.User;
-import com.kdob.piq.identity.persistence.token.RefreshTokenEntity;
-import com.kdob.piq.identity.persistence.token.RefreshTokenRepository;
+import com.kdob.piq.identity.domain.model.User;
+import com.kdob.piq.identity.infrastructure.persistence.token.RefreshTokenEntity;
+import com.kdob.piq.identity.infrastructure.persistence.token.RefreshTokenRepository;
 import org.jspecify.annotations.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

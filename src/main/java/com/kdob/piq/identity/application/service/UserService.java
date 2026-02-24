@@ -1,7 +1,7 @@
-package com.kdob.piq.identity.application;
+package com.kdob.piq.identity.application.service;
 
-import com.kdob.piq.identity.domain.Role;
-import com.kdob.piq.identity.domain.User;
+import com.kdob.piq.identity.domain.model.Role;
+import com.kdob.piq.identity.domain.model.User;
 import com.kdob.piq.identity.domain.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public User register(String email, String rawPassword) {
+    public void register(String email, String rawPassword) {
         userRepository.findByEmail(email)
                 .ifPresent(user -> {
                     throw new IllegalStateException("User with email: [" + user.getEmail() + "] already exists");
@@ -29,7 +29,7 @@ public class UserService {
         String passwordHash = passwordEncoder.encode(rawPassword);
 
         User user = new User(null, email, passwordHash, Set.of(Role.USER), null);
-        return userRepository.save(user);
+        userRepository.save(user);
     }
 
     public User authenticate(String email, String rawPassword) {

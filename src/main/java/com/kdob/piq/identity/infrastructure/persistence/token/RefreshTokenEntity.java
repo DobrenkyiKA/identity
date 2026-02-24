@@ -1,4 +1,4 @@
-package com.kdob.piq.identity.persistence.token;
+package com.kdob.piq.identity.infrastructure.persistence.token;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

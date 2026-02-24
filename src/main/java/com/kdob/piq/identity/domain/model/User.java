@@ -1,4 +1,4 @@
-package com.kdob.piq.identity.domain;
+package com.kdob.piq.identity.domain.model;
 
 import java.time.Instant;
 import java.util.Set;

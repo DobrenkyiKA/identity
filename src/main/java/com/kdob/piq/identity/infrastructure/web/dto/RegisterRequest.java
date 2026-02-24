@@ -1,4 +1,4 @@
-package com.kdob.piq.identity.api.dto;
+package com.kdob.piq.identity.infrastructure.web.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

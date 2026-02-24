@@ -1,7 +1,7 @@
-package com.kdob.piq.identity.persistence;
+package com.kdob.piq.identity.infrastructure.persistence;
 
-import com.kdob.piq.identity.domain.User;
-import com.kdob.piq.identity.domain.UserMapper;
+import com.kdob.piq.identity.domain.model.User;
+import com.kdob.piq.identity.domain.model.UserMapper;
 import com.kdob.piq.identity.domain.UserRepository;
 import org.springframework.stereotype.Repository;
 
@@ -28,9 +28,9 @@ public class JpaUserRepository implements UserRepository {
     }
 
     @Override
-    public User save(final User user) {
+    public void save(final User user) {
         final UserEntity userEntity = UserMapper.toEntity(user);
         final UserEntity savedUserEntity = repository.save(userEntity);
-        return UserMapper.toDomain(savedUserEntity);
+        UserMapper.toDomain(savedUserEntity);
     }
 }

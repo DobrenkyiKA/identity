@@ -1,4 +1,4 @@
-package com.kdob.piq.identity.api;
+package com.kdob.piq.identity.infrastructure.web;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

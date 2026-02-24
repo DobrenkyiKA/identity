@@ -1,4 +1,4 @@
-package com.kdob.piq.identity.persistence.token;
+package com.kdob.piq.identity.infrastructure.persistence.token;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

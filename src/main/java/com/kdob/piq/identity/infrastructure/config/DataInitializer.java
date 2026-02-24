@@ -1,7 +1,7 @@
-package com.kdob.piq.identity.config;
+package com.kdob.piq.identity.infrastructure.config;
 
-import com.kdob.piq.identity.domain.Role;
-import com.kdob.piq.identity.domain.User;
+import com.kdob.piq.identity.domain.model.Role;
+import com.kdob.piq.identity.domain.model.User;
 import com.kdob.piq.identity.domain.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
