@@ -10,12 +10,13 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "users")
-public class UserEntity {
+public class UserEntity extends BaseEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_sequence")
+    @SequenceGenerator(name = "users_sequence", sequenceName = "users_id_sequence", allocationSize = 50)
     @Column(nullable = false, updatable = false)
-    private UUID id;
+    private Long id;
 
     @Column(nullable = false, unique = true, columnDefinition = "citext")
     private String email;
@@ -38,15 +39,15 @@ public class UserEntity {
 
     protected UserEntity() {}
 
-    public UserEntity(UUID id, String email, String passwordHash, Set<Role> roles, Instant createdAt) {
-        this.id = id;
+    public UserEntity(String email, String passwordHash, Set<Role> roles, Instant createdAt) {
         this.email = email;
         this.passwordHash = passwordHash;
         this.roles = roles;
         this.createdAt = createdAt;
     }
 
-    public UUID getId() {
+    @Override
+    public Long getId() {
         return id;
     }
     public String getEmail() {

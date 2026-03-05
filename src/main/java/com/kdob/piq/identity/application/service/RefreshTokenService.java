@@ -26,9 +26,9 @@ public class RefreshTokenService {
     }
 
     @Transactional
-    public String create(UUID userId) {
+    public String create(Long userId) {
         RefreshTokenEntity refreshToken = new RefreshTokenEntity(
-                UUID.randomUUID(),
+                null,
                 UUID.randomUUID().toString(),
                 userId,
                 Instant.now().plus(REFRESH_TOKEN_TTL)

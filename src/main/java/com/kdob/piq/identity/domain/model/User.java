@@ -6,13 +6,13 @@ import java.util.UUID;
 
 public class User {
 
-    private final UUID id;
+    private final Long id;
     private final String email;
     private final String passwordHash;
     private final Set<Role> roles;
     private final Instant createdAt;
 
-    public User(UUID id, String email, String passwordHash, Set<Role> roles, Instant createdAt) {
+    public User(Long id, String email, String passwordHash, Set<Role> roles, Instant createdAt) {
         this.id = id;
         this.email = email;
         this.passwordHash = passwordHash;
@@ -20,7 +20,7 @@ public class User {
         this.createdAt = createdAt;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 

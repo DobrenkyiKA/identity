@@ -38,7 +38,7 @@ public class UserService {
                 .orElseThrow(() -> new IllegalStateException("Invalid credentials"));
     }
 
-    public User findById(final UUID userId) {
+    public User findById(final Long userId) {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalStateException("User with id: [" + userId + "] not found"));
     }

@@ -23,7 +23,7 @@ public class JpaUserRepository implements UserRepository {
     }
 
     @Override
-    public Optional<User> findById(final UUID id) {
+    public Optional<User> findById(final Long id) {
         return repository.findById(id).map(UserMapper::toDomain);
     }
 

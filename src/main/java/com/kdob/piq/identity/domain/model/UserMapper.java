@@ -5,7 +5,7 @@ import com.kdob.piq.identity.infrastructure.persistence.UserEntity;
 public class UserMapper {
 
     static public UserEntity toEntity(User user) {
-        return new UserEntity(user.getId(), user.getEmail(), user.getPasswordHash(), user.getRoles(), user.getCreatedAt());
+        return new UserEntity(user.getEmail(), user.getPasswordHash(), user.getRoles(), user.getCreatedAt());
     }
 
     static public User toDomain(UserEntity entity) {

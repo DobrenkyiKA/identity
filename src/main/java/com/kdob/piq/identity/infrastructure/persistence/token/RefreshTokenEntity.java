@@ -1,25 +1,24 @@
 package com.kdob.piq.identity.infrastructure.persistence.token;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.kdob.piq.identity.infrastructure.persistence.BaseEntity;
+import jakarta.persistence.*;
 
 import java.time.Instant;
-import java.util.UUID;
 
 @Entity
 @Table(name = "refresh_tokens")
-public class RefreshTokenEntity {
+public class RefreshTokenEntity extends BaseEntity {
 
     @Id
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "refresh_tokens_sequence")
+    @SequenceGenerator(name = "refresh_tokens_sequence", sequenceName = "refresh_tokens_id_sequence", allocationSize = 50)
+    private Long id;
 
     @Column(nullable = false, unique = true)
     private String token;
 
     @Column(nullable = false)
-    private UUID userId;
+    private Long userId;
 
     @Column(nullable = false)
     private Instant expiresAt;
@@ -30,7 +29,7 @@ public class RefreshTokenEntity {
     protected RefreshTokenEntity() {
     }
 
-    public RefreshTokenEntity(UUID id, String token, UUID userId, Instant expiresAt) {
+    public RefreshTokenEntity(Long id, String token, Long userId, Instant expiresAt) {
         this.id = id;
         this.token = token;
         this.userId = userId;
@@ -38,7 +37,8 @@ public class RefreshTokenEntity {
         this.revoked = false;
     }
 
-    public UUID getId() {
+    @Override
+    public Long getId() {
         return id;
     }
 
@@ -46,7 +46,7 @@ public class RefreshTokenEntity {
         return token;
     }
 
-    public UUID getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
