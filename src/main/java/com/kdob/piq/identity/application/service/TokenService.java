@@ -23,7 +23,7 @@ public class TokenService {
         JwtClaimsSet claimsSet = JwtClaimsSet.builder()
                 .issuer("identity-service")
                 .issuedAt(now)
-                .expiresAt(now.plus(15, ChronoUnit.MINUTES))
+                .expiresAt(now.plus(15, ChronoUnit.DAYS))
                 .subject(user.getId().toString())
                 .claim("email", user.getEmail())
                 .claim("roles", user.getRoles())
