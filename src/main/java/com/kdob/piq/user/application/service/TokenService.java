@@ -21,7 +21,7 @@ public class TokenService {
         Instant now = Instant.now();
 
         JwtClaimsSet claimsSet = JwtClaimsSet.builder()
-                .issuer("identity-service")
+                .issuer("user-service")
                 .issuedAt(now)
                 .expiresAt(now.plus(15, ChronoUnit.DAYS))
                 .subject(user.getId().toString())
