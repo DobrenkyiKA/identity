@@ -41,9 +41,9 @@ The microservice is built using a stable and secure Java-based stack:
 The microservice follows a **layered architecture** influenced by **Domain-Driven Design (DDD)** and **Hexagonal** principles, similar to other backend services in the project.
 
 ### Package Structure:
-- `com.kdob.piq.identity.domain`: Contains core domain models (`User`, `Role`), repository interfaces, and domain mappers.
-- `com.kdob.piq.identity.application`: Contains application services that orchestrate use cases (e.g., `AuthService`, `TokenService`, `UserService`).
-- `com.kdob.piq.identity.infrastructure`: Contains technical implementation details:
+- `com.kdob.piq.user.domain`: Contains core domain models (`User`, `Role`), repository interfaces, and domain mappers.
+- `com.kdob.piq.user.application`: Contains application services that orchestrate use cases (e.g., `AuthService`, `TokenService`, `UserService`).
+- `com.kdob.piq.user.infrastructure`: Contains technical implementation details:
     - `persistence`: JPA entities, Spring Data repositories, and Flyway migration scripts.
     - `web`: REST controllers, request/response DTOs.
     - `config`: Spring Boot configurations for Security, JWT, JPA, and Password encoding.
