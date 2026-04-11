@@ -1,18 +1,19 @@
 FROM eclipse-temurin:25-jdk-alpine AS build
 WORKDIR /workspace
-COPY mvnw .
-COPY .mvn/ .mvn/
-COPY pom.xml .
-RUN chmod +x mvnw && ./mvnw dependency:go-offline -B
+COPY gradlew .
+COPY gradle/ gradle/
+COPY build.gradle .
+COPY settings.gradle .
+RUN chmod +x gradlew && ./gradlew dependencies --no-daemon
 COPY src/ src/
-RUN ./mvnw package -B -DskipTests
+RUN ./gradlew bootJar --no-daemon -x test
 
 FROM eclipse-temurin:25-jre-alpine AS runtime
 WORKDIR /app
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
-COPY --from=build /workspace/target/*.jar app.jar
+COPY --from=build /workspace/build/libs/*.jar app.jar
 USER appuser
-EXPOSE 8082
+EXPOSE 8085
 HEALTHCHECK --interval=10s --timeout=5s --retries=5 \
-  CMD wget -qO- http://localhost:8082/actuator/health || exit 1
+  CMD wget -qO- http://localhost:8085/actuator/health || exit 1
 ENTRYPOINT ["java", "-jar", "app.jar"]
