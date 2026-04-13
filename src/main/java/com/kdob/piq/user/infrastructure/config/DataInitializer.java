@@ -6,7 +6,9 @@ import com.kdob.piq.user.domain.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +24,7 @@ import java.util.Set;
  * Password: admin123
  */
 @Component
-@Profile({"default", "dev"})
+@Profile({"default", "dev", "local"})
 public class DataInitializer implements CommandLineRunner {
     private static final Logger log = LoggerFactory.getLogger(DataInitializer.class);
 

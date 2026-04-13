@@ -3,6 +3,9 @@ plugins {
     id 'org.springframework.boot' version '4.0.5'
     id 'io.spring.dependency-management' version '1.1.7'
 }
+ext {
+    springCloudVersion = "2025.1.1"
+}
 
 group = 'com.kdob'
 version = '0.0.1-SNAPSHOT'
@@ -27,11 +30,17 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-config:5.0.2'
     implementation 'org.flywaydb:flyway-database-postgresql'
     implementation 'org.springframework.boot:spring-boot-devtools'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     runtimeOnly 'org.postgresql:postgresql'
     testImplementation 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"
+    }
 }
 
 tasks.named('test') {
