@@ -7,10 +7,11 @@ CREATE SEQUENCE users_id_sequence START WITH 1 INCREMENT BY 50 CACHE 50;
 CREATE TABLE users
 (
     id            BIGINT,
+    auth_id        BIGINT       NOT NULL,
     email         CITEXT       NOT NULL,
-    password_hash VARCHAR(255) NOT NULL,
     created_at    TIMESTAMPTZ  NOT NULL DEFAULT now(),
     CONSTRAINT pk_users_id PRIMARY KEY (id),
+    CONSTRAINT uq_users_authId UNIQUE (auth_id),
     CONSTRAINT uq_users_email UNIQUE (email)
 );
 

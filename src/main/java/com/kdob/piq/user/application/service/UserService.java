@@ -1,6 +1,5 @@
 package com.kdob.piq.user.application.service;
 
-import com.kdob.piq.user.domain.UserRepository;
 import com.kdob.piq.user.domain.model.User;
 import org.springframework.stereotype.Service;
 

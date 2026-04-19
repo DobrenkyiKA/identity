@@ -1,8 +1,7 @@
 package com.kdob.piq.user.infrastructure.persistence;
 
+import com.kdob.piq.user.application.service.UserRepository;
 import com.kdob.piq.user.domain.model.User;
-import com.kdob.piq.user.domain.model.UserMapper;
-import com.kdob.piq.user.domain.UserRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -24,6 +23,11 @@ public class JpaUserRepository implements UserRepository {
     @Override
     public Optional<User> findById(final Long id) {
         return repository.findById(id).map(UserMapper::toDomain);
+    }
+
+    @Override
+    public Optional<User> findByAuthId(final Long authId) {
+        return repository.findByAuthId(authId).map(UserMapper::toDomain);
     }
 
     @Override

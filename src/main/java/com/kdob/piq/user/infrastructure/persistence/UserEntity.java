@@ -17,11 +17,11 @@ public class UserEntity extends BaseEntity {
     @Column(nullable = false, updatable = false)
     private Long id;
 
+    @Column(nullable = false, unique = true)
+    private Long authId;
+
     @Column(nullable = false, unique = true, columnDefinition = "citext")
     private String email;
-
-    @Column(nullable = false)
-    private String passwordHash;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(
@@ -38,26 +38,29 @@ public class UserEntity extends BaseEntity {
 
     protected UserEntity() {}
 
-    public UserEntity(String email, String passwordHash, Set<Role> roles, Instant createdAt) {
+    public UserEntity(Long authId, String email, Set<Role> roles) {
+        this.authId = authId;
         this.email = email;
-        this.passwordHash = passwordHash;
         this.roles = roles;
-        this.createdAt = createdAt;
     }
 
     @Override
     public Long getId() {
         return id;
     }
+
+    public Long getAuthId() {
+        return authId;
+    }
+
     public String getEmail() {
         return email;
     }
-    public String getPasswordHash() {
-        return passwordHash;
-    }
+
     public Set<Role> getRoles() {
         return roles;
     }
+
     public Instant getCreatedAt() {
         return createdAt;
     }
