@@ -1,0 +1,56 @@
+plugins {
+    id("java")
+    id("org.springframework.boot") version "4.0.5"
+    id("io.spring.dependency-management") version "1.1.7"
+}
+
+group = "com.kdob.piq"
+version = "0.0.1-SNAPSHOT"
+description = "user"
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+extra["springCloudVersion"] = "2025.1.1"
+
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+    implementation("org.springframework.boot:spring-boot-starter-webmvc")
+    implementation("org.springframework.boot:spring-boot-starter-flyway")
+    implementation("org.springframework.cloud:spring-cloud-starter-config:5.0.2")
+    implementation("org.flywaydb:flyway-database-postgresql")
+    implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
+    implementation("org.springframework.kafka:spring-kafka")
+    
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
+    runtimeOnly("org.postgresql:postgresql")
+    
+    testImplementation("com.h2database:h2")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.security:spring-security-test")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
+    }
+}
+
+tasks.named<Test>("test") {
+    useJUnitPlatform()
+    jvmArgs(
+        "-javaagent:${configurations.testRuntimeClasspath.get().find { it.name.startsWith("byte-buddy-agent") }?.absolutePath}",
+        "-XX:+EnableDynamicAgentLoading",
+        "-Xshare:off"
+    )
+}
