@@ -1,7 +1,5 @@
 package com.kdob.piq.user.infrastructure.kafka;
 
-import org.apache.kafka.clients.admin.AdminClientConfig;
-import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -41,8 +39,9 @@ public class KafkaConsumerConfig {
                 ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JacksonJsonDeserializer.class,
                 ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest",
                 ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false,
-                JacksonJsonDeserializer.TRUSTED_PACKAGES, "com.kdob.piq.*",
-                JacksonJsonDeserializer.VALUE_DEFAULT_TYPE, UserCreatedEvent.class.getName()
+                JacksonJsonDeserializer.TRUSTED_PACKAGES, "*",
+                JacksonJsonDeserializer.VALUE_DEFAULT_TYPE, UserCreatedEvent.class.getName(),
+                JacksonJsonDeserializer.USE_TYPE_INFO_HEADERS, false
         );
         return new DefaultKafkaConsumerFactory<>(props);
     }
