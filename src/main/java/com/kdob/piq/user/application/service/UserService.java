@@ -16,4 +16,9 @@ public class UserService {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalStateException("User with id: [" + userId + "] not found"));
     }
+
+    public User findByAuthId(final Long authId) {
+        return userRepository.findByAuthId(authId)
+                .orElseThrow(() -> new IllegalStateException("User with authId: [" + authId + "] not found"));
+    }
 }

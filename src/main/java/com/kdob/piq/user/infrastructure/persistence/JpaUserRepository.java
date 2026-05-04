@@ -27,7 +27,8 @@ public class JpaUserRepository implements UserRepository {
 
     @Override
     public Optional<User> findByAuthId(final Long authId) {
-        return repository.findByAuthId(authId).map(UserMapper::toDomain);
+        final Optional<UserRecord> byAuthId = repository.findByAuthId(authId);
+        return byAuthId.map(UserMapper::toDomain);
     }
 
     @Override

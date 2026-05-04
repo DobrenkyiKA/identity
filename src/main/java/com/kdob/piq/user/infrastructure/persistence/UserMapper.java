@@ -11,4 +11,8 @@ public class UserMapper {
     static public User toDomain(UserEntity entity) {
         return new User(entity.getAuthId(), entity.getEmail(), entity.getRoles());
     }
+
+    static public User toDomain(UserRecord entity) {
+        return new User(entity.authId(), entity.email(), entity.roles());
+    }
 }
